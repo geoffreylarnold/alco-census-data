@@ -28,18 +28,19 @@ plot_gg(mp, multicore=TRUE, width=5 ,height=5, scale=250)
 render_movie("img/alco_blckgrp.mp4", frames = 720, fps=30, zoom=0.6, fov = 30)
 render_snapshot(clear = TRUE)
 
-den <- ggplot(data = total_pop, aes(fill = pop_density)) +
+den <- ggplot(data = total_pop, aes(fill = pop_density, color = pop_density)) +
   geom_sf(color = NA) +
   theme_map() +
   labs(fill = "Population Density") +
-  scale_fill_distiller(palette = "RdYlGn") +
+  scale_fill_distiller(palette = "Blues", direction = 0) +
+  scale_color_distiller(palette = "Blues", direction = 0) +
   theme(legend.position="bottom")
 
 den
 
 render_snapshot(clear = TRUE)
-plot_gg(den, multicore=TRUE, width=5 ,height=5, scale=250)
-render_snapshot()
+plot_gg(den, multicore=TRUE, width=8 ,height=8, scale=250)
+render_snapshot(title_text = "Allegheny County Pop. Density")
 save_3dprint("alo_densitry.stl", clear=TRUE)
 
 plot_gg(den, multicore=TRUE, width=5 ,height=5, scale=250)
@@ -79,7 +80,7 @@ pa_den <- ggplot(data = pop_pa, aes(fill = pop_density)) +
   geom_sf(color = NA) +
   theme_map() +
   labs(fill = "Population Density") +
-  scale_fill_distiller(palette = "RdYlGn") +
+  scale_fill_distiller(palette = "Blues") +
   theme(legend.position="bottom")
 
 plot_gg(pa_den, multicore=TRUE, width=5 ,height=5, scale=250)
