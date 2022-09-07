@@ -16,6 +16,8 @@ total_pop <- get_decennial(year = 2020, variables = "P1_001N", state = 42, count
          area = as.numeric(area),
          pop_density = value / area)
 
+muni_pop <- get_decennial(year = 2020, variables = "P1_001N", state = 42, county = 3, geography = "county subdivision")
+
 mp <- ggplot(data = total_pop, aes(fill = value, color = value)) +
   geom_sf() +
   theme_map() +
